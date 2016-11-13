@@ -1,4 +1,3 @@
-import reducers from '../reducers'
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import {routerReducer, syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 import {reducer as reduxAsyncConnect} from 'redux-async-connect'
@@ -11,7 +10,6 @@ const devToolsExtension = window.devToolsExtension ? window.devToolsExtension() 
 
 export default function create(history, initialData = {}) {
   const reducer = combineReducers({
-    ...reducers,
     reduxAsyncConnect,
     routing: routerReducer,
   })
