@@ -1,0 +1,6 @@
+node_modules/**
+build/**
+server/**/*.html
+app/**/*.html
+public/**
+scripts/**

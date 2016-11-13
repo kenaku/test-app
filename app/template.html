@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-language" content="ru">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="dns-prefetch" href="//www.google-analytics.com/">
+
+  {{{title}}}
+
+  {{#meta}}
+    {{{meta}}}
+  {{/meta}}
+
+  {{#link}}
+    {{{link}}}
+  {{/link}}
+
+  {{#script}}
+    {{{script}}}
+  {{/script}}
+
+  {{#statics.css}}
+    <link rel="stylesheet" href="/assets/{{statics.css}}">
+  {{/statics.css}}
+
+  {{#preloadData}}
+    <script>
+      _PRELOAD_DATA_ = {{{preloadData}}};
+    </script>
+  {{/preloadData}}
+</head>
+<body>
+  <main id="app">{{{html}}}</main>
+  {{#sentryDSN}}
+    <script src="//cdn.ravenjs.com/1.1.22/console/raven.min.js"></script>
+    <script>
+      Raven.config('{{{sentryDSN}}}', {
+        ignoreErrors: [
+          'The "fb-root" div has not been created, auto-creating',
+          'Download the React DevTools for a better development experience: https://fb.me/react-devtools',
+          /Warning: React attempted to reuse markup/,
+          /is being rendered by both\.*using the same key/
+        ]
+        {{#sentryVersion}}, release: '{{{sentryVersion}}}'{{/sentryVersion}}
+      }).install();
+    </script>
+  {{/sentryDSN}}
+
+  {{#statics.js}}
+    <script src="/assets/{{statics.js}}"></script>
+  {{/statics.js}}
+</body>
+</html>

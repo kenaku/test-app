@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="ru">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+  <body>
+    <h1>Prerender is not ready</h1>
+    <h2 id="timeout">retrying in 3 sec</h2>
+
+    <script type="text/javascript">
+      var seconds = 3;
+
+      window.prerenderCheckInterval = setInterval(function() {
+        if (seconds < 1) {
+          clearInterval(window.prerenderCheckInterval)
+          document.location.reload()
+        } else {
+          seconds = seconds - 1;
+
+          document.querySelectorAll('#timeout')[0].innerHTML = 'retrying in ' + seconds + ' sec';
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

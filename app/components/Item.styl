@@ -1,0 +1,22 @@
+.item
+  list-style: none
+  padding: 5px 10px
+  cursor: pointer
+  display: flex
+  justify-content: space-between
+  width: 100%
+  &:hover:not(.selected)
+    color: #333
+    background: #d4d4d4
+
+.selected
+  background: #31313e
+  color: #f9f9f9
+
+.icon
+  padding: 2px
+  svg
+    width: 24px
+    height: 24px
+  .selected &
+    fill: white
